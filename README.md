@@ -1,6 +1,6 @@
 # Poker-Game-Project-Euler-54-
 
-This is a C++ based solution for problem 54 on projecteuler.com
+This is a C++ based solution for problem 54 on projecteuler.net
 
 At this point I have only been programming for 2 months, so I'm sure my code is far less than spectacular. For one, I used global variables and a global array that gets passed between functions, which I'm guessing isn't the best idea. I also "namespace std", however that was simply to make the code more ledgible for this problem. I am aware that it is a "no-no" and I've never used it apart from this project. :)
 
