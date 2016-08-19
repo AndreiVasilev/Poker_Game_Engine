@@ -75,7 +75,7 @@ void collectNumbers(string hand){
 
 // bubble sort cardNumArray into ascending numerical order
 void organizeCards(){
-	int temp=0, tempHigh=0;
+	int temp=0;
 	for(int i=0; i<=4; i++){
 		for(int j=i+1; j<=4; j++){
 			if(cardNumArray[j]<cardNumArray[i]){
