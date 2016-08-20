@@ -54,6 +54,11 @@ int main(){
 	cout << "Player 2 wins: " << player2Wins << endl;
 }
 ```
+```sh
+Sample Input:  JS 8D 8C AS KH 3C 4H 3S 4S 4D
+Sample Output: Player 1 Wins: 0
+	       Player 2 Wins: 1
+```
 I tried to keep my main function as simple as possible. The poker.txt file is read line by line, which brings in 10 cards at a time. The first 5 cards are player one's and the second 5 are player two's. So the line read in is split in half into two hands, each of which are then fed to the "playPoker" function. The playerPoker() function will return which player won, player 1 or player 2. The winnings are then counted and displayed at the end.
 
 
@@ -83,6 +88,12 @@ int playPoker(string hand1, string hand2){
 		return winner;
 }
 ```
+```sh
+Sample Input: JS 8D 8C AS KH
+              3C 4H 3S 4S 4D
+Sample Output: 0
+	       1
+```
 This is one of the biggest functions. The hands come in and are tested consecutively and then compared to determine a winner. This is done through all of the smaller functions. Both hands (depending on what they are) will be given a rank from 0 to 9. This rank corresponds with the 10 different kinds of hands you can have in poker. The ranks of the hands will be compared and the hand with the higher rank wins. If the hands have the same rank (for example they are both full houses, rank 6) then the cards of the main portion of the hand (the three of a kind card for a full house) will be compared to determine a winner. If the hands are identical (for example both are a pair of queens), then the highest cards in each hand will be compared.
 
 
@@ -99,6 +110,10 @@ string convertHand(string hand){
 	}
 	return hand;
 }
+```
+```sh
+Sample Input: JS 8D 8C AS KH
+Sample Output: 11S 8D 8C 14S 13H
 ```
 Before a hand can be tested to determine what it is, the convertHand function changes all letter based cards in the hand to a corresponding number. This makes comparing hands later on much easier.
 
@@ -127,6 +142,10 @@ void collectNumbers(string hand){
     }
 }
 ```
+```sh
+Sample Input: JS 8D 8C AS KH
+Resulting Array: {11, 8, 8, 14, 13}
+```
 This function collects all of the number values of the cards in a hand and stores them into a global integer array. It skips over any letters associated with suit and only grabs numbers. This array is then used by other functions to check for various poker hands. At this point, the high card of the hand is also saved for later to be used for a tie breaker if necessary.
 
 
@@ -144,6 +163,13 @@ void organizeCards(){
 		}
 	}
 }
+```
+```sh
+Array: {11, 8, 8, 14, 13}
+Resulting Array: {8, 8, 11, 13, 14}
+
+Sample Array: {4, 0, 0, 0, 7}
+Sample Output: {0, 0, 0, 4, 7}
 ```
 This function is a simple bubble sort that arranges the card number array into ascending order. This makes checking for poker hands much easier. At this point, the hand is now completely numerical and has been organized. From here we can check what type of poker hand it is.
 
@@ -188,6 +214,10 @@ int handRank(string hand){
 		return 0;
 }
 ```
+```sh
+Sample Input: 11S 8D 8C 14S 13H
+Sample Output: 1
+```
 This function runs all of the functions actually responsible for determining what type of poker hand the current hand being tested is. Depending on what comes back as true or not, a corresponding rank will be given to the hand. 
 
 Now lets look at the functions that test for the various types of poker hands.
@@ -210,6 +240,13 @@ bool straight(){
 		return false;
 }
 ```
+```sh
+Sample Array: {8, 9, 10, 11, 12}
+Sample Output: true
+
+Sample Array: {8, 8, 11, 13, 14}
+Sample Output: false
+```
 This function simply looks at the global integer array holding the card number values and checks to see if they are all consecutively separated by 1. If all 5 are, then its a straight. A special case also has to be tested for, which is the A,2,3,4,5 straight (called "the wheel" in poker). Ace cards are given a value of 14 and the array holding the numbers is numerically organized that means such a straight is represented in the array as 2,3,4,5,14.
 
 
@@ -227,6 +264,13 @@ bool flush(string hand){
 	}
 	return true;
 }
+```
+```sh
+Sample Input: 11S 8D 8C 14S 13H
+Sample Output: false
+
+Sample Input: 11S 8S 4S 14S 13S
+Sample Output: true
 ```
 This function tests the hand for a flush by removing all characters except for suits. If all the characters match, then the hand is a flush. Straightforward and simple.
 
@@ -252,6 +296,16 @@ int ofaKind(){
 	return 0;
 }
 ```
+```sh
+Sample Input: 8H 8D 8C 8S 13H
+Sample Output: 4
+
+Sample Input: 11S 8D 8C 8S 13H
+Sample Output: 3
+
+Sample Input: 11S 8D 8C 14S 13H
+Sample Output: 0
+```
 This function tests for 3 and 4 of a kinds. It checks for 3 consecutive equal digits. If its a 4 of a kind there will be 2 sets of them, if it is a 3 of a kind there will be 1 set. This function also sets the "handHigh" variable. For straights and flushes, checking to see who has the better hand is easy, just check the high card out of the 5 (the last value of the global integer array). For other hands though, the high card doesn't necessarily determine the winner. A four of a kind 24444 will beat a 33336, even though the loosing hand has the highest total card. This means that the high card of the winning portion of the hand (the 4 and 3 respectively) must be saved to help determine a winner.
 
 
@@ -267,6 +321,11 @@ void removeCards(){
 	}
 }
 ```
+```sh
+Sample Array: {4, 8, 8, 8, 7}
+Sample Output: {4, 0, 0, 0, 7}
+```
+
 In the event of a 3 of a kind, this function is called from within the "ofaKind()" function. It replaces the 3 repeating cards from the global integer array with zeros, leaving only 2 cards left. This makes it easier to check the remaining two cards for a pair, and in turn to see if the hand is a full house. After this function is called, the integer array is resorted so that the three zeros are at the beginning and the last two cards are at the end.
 
 <b>bool pairs()</b>
@@ -289,6 +348,19 @@ bool pairs(){
 	return false;
 }
 ```
+```sh
+Sample Array: {4, 4, 8, 8, 7}
+Sample Output: true
+
+Sample Array: {0, 0, 8, 8, 7}
+Sample Output: true
+
+Sample Array: {0, 0, 0, 11, 14}
+Sample Output: false
+
+Sample Array: {4, 5, 8, 11, 14}
+Sample Output: false
+```
 This function checks for pairs. Every time it finds a pair, it replaces them with zeros. Zeros are ignored by this function. This makes it so that if the hand is a two pair, the next time the function is run, it won't find the same pair twice. Also, if the hand was not a 4 of a kind, 3 of a kind, or full house, the handHigh card is assigned here instead of in the ofaKind() function.
 
 
@@ -302,6 +374,13 @@ int compareRank(int rank1, int rank2){
 	else
 		return 3;
 }
+```
+```sh
+Sample Input: 4, 8
+Sample Output: 2
+
+Sample Input: 8, 8
+Sample Output: 3
 ```
 At this point the handRank() function will have determined what type of poker hand the hand is, and it will have assigned it a proper rank. The playPoker() function will go through this entire process twice, once for each hand. Once a rank has been given to both hands, this compareRank() function is run. If the ranks are not equal than there is a clear winner and the playPoker(). For instance a two pair vs a full house. If both players have an equal ranked hand though, a full house vs a full house, the hands must be compared.
 
@@ -321,10 +400,22 @@ int compareHands(int handHigh1, int totalHigh1, int handHigh2, int totalHigh2){
 	}
 }
 ```
+```sh
+Sample Input: 4, 8, 3, 9
+Sample Output: 1
+
+Sample Input: 8, 8, 11, 14
+Sample Output: 2
+```
 If the ranks were equal, then that means the two players have the same type of hand. To determine a winner, the cards are looked at which were saved earlier as integer values. The handHigh value is the value such as the 4 in a full house 44466. If one player has 44466 and the other has 77722. The handhigh value of 7 will beat the value of 4 and the second hand will win. In the event of a total tie, such as two equal two pairs like 24488 and 44889 then the hand with the highest card wins, which would be the 9.
 
 
 #Conclusion
 
 If you've made it this far, thanks for taking the time to read everything. Like I said at the beginning, I'm sure the code could be improved, but I had a lot of fun writing it nonetheless. Time to go use this to create an entire poker game program!  
+
+```sh
+Program Input: 1000 Lines of 10 cards each (2000 program executions)
+Program Runtime: 22ms
+```
 
