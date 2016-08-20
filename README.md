@@ -55,8 +55,10 @@ int main(){
 }
 ```
 ```sh
-Sample Input:  JS 8D 8C AS KH 3C 4H 3S 4S 4D
-Sample Output: Player 1 Wins: 0  Player 2 Wins: 1
+Sample Input:  JS 8D 8C AS KH 
+               3C 4H 3S 4S 4D
+Sample Output: Player 1 Wins: 0  
+               Player 2 Wins: 1
 ```
 I tried to keep my main function as simple as possible. The poker.txt file is read line by line, which brings in 10 cards at a time. The first 5 cards are player one's and the second 5 are player two's. So the line read in is split in half into two hands, each of which are then fed to the "playPoker" function. The playerPoker() function will return which player won, player 1 or player 2. The winnings are then counted and displayed at the end.
 
@@ -92,9 +94,9 @@ Sample Input: JS 8D 8C AS KH
               3C 4H 3S 4S 4D
 Sample Output: 1
 
-Sample Input: JS 8D 8C AS KH
-              3C 4H 3S 4S 4D
-Sample Output: 1
+Sample Input: JS JD 8C JC KH
+              3C 3H 3S 3D 4D
+Sample Output: 2
 ```
 This is one of the biggest functions. The hands come in and are tested consecutively and then compared to determine a winner. This is done through all of the smaller functions. Both hands (depending on what they are) will be given a rank from 0 to 9. This rank corresponds with the 10 different kinds of hands you can have in poker. The ranks of the hands will be compared and the hand with the higher rank wins. If the hands have the same rank (for example they are both full houses, rank 6) then the cards of the main portion of the hand (the three of a kind card for a full house) will be compared to determine a winner. If the hands are identical (for example both are a pair of queens), then the highest cards in each hand will be compared.
 
@@ -409,7 +411,7 @@ Sample Output: 1
 Sample Input: 8, 8, 11, 14
 Sample Output: 2
 ```
-If the ranks were equal, then that means the two players have the same type of hand. To determine a winner, the cards are looked at which were saved earlier as integer values. The handHigh value is the value such as the 4 in a full house 44466. If one player has 44466 and the other has 77722. The handhigh value of 7 will beat the value of 4 and the second hand will win. In the event of a total tie, such as two equal two pairs like 24488 and 44889 then the hand with the highest card wins, which would be the 9.
+If the ranks were equal, then that means the two players have the same type of hand. To determine a winner, the cards are looked at which were saved earlier as integer values. The handHigh value is the value such as the 4 in a full house 44466. If one player has 44466 and the other has 77722. The handHigh value of 7 will beat the value of 4 and the second hand will win. In the event of a total tie, such as two equal two pairs like 24488 and 44889 then the hand with the highest card wins, which would be the 9.
 
 
 #Conclusion
