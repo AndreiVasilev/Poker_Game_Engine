@@ -252,7 +252,7 @@ int ofaKind(){
 	return 0;
 }
 ```
-This function tests for 3 and 4 of a kinds. It checks for 3 consecutive equal digits. If its a 4 of a kind there will be 2 sets of them, if it is a 3 of a kind there will of course only be 1 set. This function also sets the "handHigh" variable. For straights and flushes, checking to see who has the better hand is easy, just check the high card out fo the 5 (the last value of the global integer array). For other hands though, the high card doesn't necessarily determine the winner. A four of a kind 24444 will beat a 33336. This means that the high card of the winning portion of the hand (the 4 and 3 respectively) must be saved to help determine a winner.
+This function tests for 3 and 4 of a kinds. It checks for 3 consecutive equal digits. If its a 4 of a kind there will be 2 sets of them, if it is a 3 of a kind there will be 1 set. This function also sets the "handHigh" variable. For straights and flushes, checking to see who has the better hand is easy, just check the high card out of the 5 (the last value of the global integer array). For other hands though, the high card doesn't necessarily determine the winner. A four of a kind 24444 will beat a 33336, even though the loosing hand has the highest total card. This means that the high card of the winning portion of the hand (the 4 and 3 respectively) must be saved to help determine a winner.
 
 
 <b>void removeCards()</b>
