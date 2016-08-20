@@ -321,7 +321,7 @@ int compareHands(int handHigh1, int totalHigh1, int handHigh2, int totalHigh2){
 	}
 }
 ```
-If the ranks were equal, then that means the two players have the same type of hand. To determine a winner, the cards are looked at which were saved earlier as integer values. The handHigh value is the value such as the 4 in a full house 44466. If one player has 44466 and the other has 77722. The handhigh value of 7 will be the value of 4 and the second hand will win. In the event of a total tie, such as two equal two pairs like 24488 and 44889 then the hand with the highest card wins, which would be the 9.
+If the ranks were equal, then that means the two players have the same type of hand. To determine a winner, the cards are looked at which were saved earlier as integer values. The handHigh value is the value such as the 4 in a full house 44466. If one player has 44466 and the other has 77722. The handhigh value of 7 will beat the value of 4 and the second hand will win. In the event of a total tie, such as two equal two pairs like 24488 and 44889 then the hand with the highest card wins, which would be the 9.
 
 
 #Conclusion
