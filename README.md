@@ -419,7 +419,7 @@ If the ranks were equal, then that means the two players have the same type of h
 If you've made it this far, thanks for taking the time to read everything. Like I said at the beginning, I'm sure the code could be improved, but I had a lot of fun writing it nonetheless. Time to go use this to create an entire poker game program!  
 
 ```sh
-Program Input: 1000 Lines of 10 cards each (2000 program executions)
+Program Input: 1000 Lines of 10 cards each (2000 poker hands)
 Program Runtime: 22ms
 ```
 
