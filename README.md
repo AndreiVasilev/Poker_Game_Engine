@@ -83,7 +83,7 @@ int playPoker(string hand1, string hand2){
 		return winner;
 }
 ```
-This is one of the biggest functions. The hands come in and are tested consecutively and then compared to determine a winner. This is done through all of the smaller functions. Both hands (depending on what they are) will be given a rank from 0 to 9. This rank corresponds with the 10 different hands you can have in poker. The ranks of the hands will be compared and the hand with the higher rank wins. If the hands have the same rank (for example they are both full houses, rank 6) then the cards of the main portion of the hand (the three of a kind card for a full house) will be compared to determine a winner. If the hands are identical (for example both are a pair of queens), then the highest cards in each hand will be compared.
+This is one of the biggest functions. The hands come in and are tested consecutively and then compared to determine a winner. This is done through all of the smaller functions. Both hands (depending on what they are) will be given a rank from 0 to 9. This rank corresponds with the 10 different kinds of hands you can have in poker. The ranks of the hands will be compared and the hand with the higher rank wins. If the hands have the same rank (for example they are both full houses, rank 6) then the cards of the main portion of the hand (the three of a kind card for a full house) will be compared to determine a winner. If the hands are identical (for example both are a pair of queens), then the highest cards in each hand will be compared.
 
 
 <b>string convertHand(string hand)</b>
