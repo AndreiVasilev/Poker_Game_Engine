@@ -1,9 +1,10 @@
 #include <iostream>
-#include <string>
-#include <algorithm>
 #include <fstream>
 
-using namespace std;
+using std::cout; 
+using std::cin; 
+using std::endl;
+using std::string;
 
 string convertHand(string hand);
 void collectNumbers(string hand);
@@ -23,7 +24,7 @@ int main(){
 	int player1Wins=0, player2Wins=0, winner=0;
 	string hands, hand1, hand2;
 	
-	ifstream file("p054_poker.txt");
+	std::ifstream file("p054_poker.txt");
 	while(getline(file, hands)){
 		hand1 = hands.substr(0, 14);
 		hand2 = hands.substr(15, 14);
@@ -64,7 +65,7 @@ void collectNumbers(string hand){
 			index++;
 			continue;
 		}
-		subHand += (to_string(hand[i]-'0'));
+		subHand += (std::to_string(hand[i]-'0'));
 		j = stoi(subHand);
 	}
 	for(int i=0; i<=4; i++){
