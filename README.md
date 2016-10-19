@@ -2,9 +2,7 @@
 
 This is a C++ based solution for problem 54 on projecteuler.net
 
-At this point I have only been programming for 2 months, so I'm sure my code is far less than spectacular. For one, I used global variables and a global array that gets passed between functions, which I'm guessing isn't the best idea. I also used "namespace std", however that was simply to make the code more legible for this problem. I am aware that it is a "no-no" and I've never used it apart from this project. :)
-
-This is also the first time I have ever posted anything to GitHub, so I figure I might as well go all out and explain the problem and my code below. I'm assuming most people won't read all of this, but oh well, it was fun nonetheless. 
+At this point I have only been programming for 2 months, so I'm sure my code is far less than spectacular. This is also the first time I have ever posted anything to GitHub, so I figure I might as well go all out and explain the problem and my code below. I'm assuming most people won't read all of this, but oh well, it was fun nonetheless. 
 
 #Problem Description from Project Euler:
 
