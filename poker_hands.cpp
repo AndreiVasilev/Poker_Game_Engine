@@ -6,18 +6,18 @@ using std::cin;
 using std::endl;
 using std::string;
 
-string convertHand(string hand);
-void collectNumbers(string hand);
+string convertHand(string);
+void collectNumbers(string);
 void organizeCards();
 void removeCards();
 bool straight();
-bool flush(string hand);
+bool flush(string);
 bool pairs();
 int ofaKind();
-int handRank(string hand);
-int playPoker(string hand1, string hand2);
-int compareRank(int rank1, int rank2);
-int compareHands(int handHigh1, int totalHigh1, int handHigh2, int totalHigh2);
+int handRank(string);
+int playPoker(string, string);
+int compareRank(int, int);
+int compareHands(int, int, int, int);
 int cardNumArray[5]={}, handHigh=0, totalHigh=0;
 
 int main(){
