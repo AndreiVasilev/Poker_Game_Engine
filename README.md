@@ -1,4 +1,4 @@
-# C++ Poker Engine
+# C++ Poker Game Engine
 
 This is a C++ based solution for problem 54 on projecteuler.net and represents a basic poker game engine.
 
