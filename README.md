@@ -1,6 +1,6 @@
-# Poker-Game-Project-Euler-54-
+# C++ Poker Engine
 
-This is a C++ based solution for problem 54 on projecteuler.net
+This is a C++ based solution for problem 54 on projecteuler.net and represents a basic poker game engine.
 
 At this point I have only been programming for 2 months, so I'm sure my code is far less than spectacular. This is also the first time I have ever posted anything to GitHub, so I figure I might as well go all out and explain the problem and my code below. I'm assuming most people won't read all of this, but oh well, it was fun nonetheless. 
 
